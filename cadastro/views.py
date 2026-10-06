@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 
 
@@ -7,6 +6,7 @@ def index(request):
     contexto = {
         'nome': 'Joca',
         'idade': 30,
+        'frutas': ['Maçã', 'Banana', 'Laranja', 'Uva', 'Cajá', 'Manga'],
     }
 
     return render(
@@ -18,7 +18,10 @@ def index(request):
 
 def contato(request):
 
-    contexto = dict()
+    contexto = {
+        "nome": "Joquinha"
+    }
+
     return render(
         request,
         'cadastro/contato.html',
