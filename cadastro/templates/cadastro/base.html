@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block titulo %}Meu Site{% endblock %}</title>
 </head>
+
 <body>
 
+    <header>
+        <h1>Cadastro</h1>
+    </header>
+    <hr>
+
     <nav>
-        <a href="/">Início</a> |
+        <a href="/">Início</a>
+        <a href="/adicionar/">Adicionar</a> |
         <a href="/contato/">Contato</a>
     </nav>
-
     <hr>
 
     <main>
+
+        {{ teste | lower }}
+
         {% block conteudo %}{% endblock %}
     </main>
 
@@ -23,4 +33,5 @@
     </footer>
 
 </body>
+
 </html>

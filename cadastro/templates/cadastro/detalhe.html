@@ -1,0 +1,16 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Caadastro - {{ pessoa.nome }}{% endblock %}
+
+{% block conteudo %}
+<article>
+    <h1>{{ pessoa.nome }}</h1>
+    <p><strong>Email:</strong> {{ pessoa.email }}</p>
+    <p><strong>Idade:</strong> {{ pessoa.idade }} anos</p>
+
+    <a href="/pessoa/{{ pessoa.id }}/editar/">Editar</a>
+    <a href="/pessoa/{{ pessoa.id }}/deletar/">Apagar</a> |
+    <a href="/">Voltar</a>
+
+</article>
+{% endblock %}
