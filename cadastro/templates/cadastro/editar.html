@@ -10,8 +10,10 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        <p>
         <button type="submit">Salvar</button>
-        <a href="/pessoa/{{ pessoa.id }}/">Cancelar</a>
+        <a href="{% url 'detalhe' id=pessoa.id %}">Cancelar</a>
+        </p>
     </form>
 
 </article>
