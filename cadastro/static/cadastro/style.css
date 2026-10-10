@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    
+    background-color: rgb(248, 212, 167);
+    color: black;
+    padding: 30px;
+
+}
+
+body {
+    background-color: lightblue;
+}
+
+nav {
+    background-color: black;
+    padding: 15px;
+    color:white;
+}
+
+nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+main{
+    background-image: url("/static/cadastro/img/bkg.jpeg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    padding: 20px;
+    color: white;
+    
+}
