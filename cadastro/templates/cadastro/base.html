@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    {% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="{% static 'cadastro/style.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro/style.css' %}">
     <title>{% block titulo %}Meu Site{% endblock %}</title>
 </head>
 
@@ -26,14 +27,21 @@
             <button type="submit">Sair</button>
         </form>
         {% else %}
-        |  <a href="{% url 'login' %}">Entrar</a>
+        | <a href="{% url 'login' %}">Entrar</a>
         {% endif %}
     </nav>
     <hr>
 
     <main>
-
-        {{ teste | lower }}
+        <div class="alerts">
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
 
         {% block conteudo %}{% endblock %}
     </main>

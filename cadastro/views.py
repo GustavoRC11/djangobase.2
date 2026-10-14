@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
-
+from django.contrib import messages
 
 def index(request):
 
@@ -50,6 +50,7 @@ def adicionar(request):
         form = PessoaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Pessoa adicionada com sucesso!')
             return redirect('index')
     else:
         form = PessoaForm()
@@ -63,6 +64,7 @@ def adicionar(request):
         }
     )
 
+
 @login_required
 def detalhe(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
@@ -73,6 +75,7 @@ def detalhe(request, id):
                       'nome': 'Joquinha'
                   }
                   )
+
 
 @login_required
 def editar(request, id):
@@ -93,6 +96,7 @@ def editar(request, id):
                   }
                   )
 
+
 @login_required
 def deletar(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
@@ -100,10 +104,10 @@ def deletar(request, id):
         pessoa.delete()
         return redirect('index')
     return render(
-            request,
-            'cadastro/deletar.html',
-            {
-                      'pessoa': pessoa,
-                      'nome': 'Joquinha'
-            }
-            )
+        request,
+        'cadastro/deletar.html',
+        {
+            'pessoa': pessoa,
+            'nome': 'Joquinha'
+        }
+    )
