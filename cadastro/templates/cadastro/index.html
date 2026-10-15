@@ -8,19 +8,32 @@
 
     <h2>Pessoas Cadastradas</h2>
 
+    {% if user.is_authenticated %}
+    <p>Usuário {{ user.username }} com e-mail {{ user.email }} está aqui</p>
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+    {% else %}
+    <p>Loga aí, por favor!</p>
+    {% endif %}
+
     {% if total == 0 %}
 
     <p>Ooops! Cadastre alguém primeiro!</p>
 
     {% else %}
 
+   <div class="container-cards">
+
     {% for pessoa in pessoas %}
-    <ul>
-        <li>Nome: {{ pessoa.nome }}</li>
-        <li>E-mail: {{ pessoa.email }}</li>
-        <li>Idade: {{ pessoa.idade }}</li>
-        <li><a href="/pessoa/{{ pessoa.id }}">Ver</a></li>
-    </ul>
+
+        <div class="card">
+            <h3>{{ pessoa.nome }}</h3>
+
+            <p><strong>E-mail:</strong> {{ pessoa.email }}</p>
+
+            <p><strong>Idade:</strong> {{ pessoa.idade }}</p>
+
+            <a href="/pessoa/{{ pessoa.id }}">Ver detalhes</a>
+        </div>
     {% endfor %}
 
     {% endif %}

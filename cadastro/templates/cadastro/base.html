@@ -35,15 +35,23 @@
     <hr>
 
     <main>
-
-        {{ teste | lower }}
+ {# Mensagens entre páginas #}
+        {% if messages %}
+            <div class="alerts">
+                <ul>
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
         {% block conteudo %}{% endblock %}
     </main>
 
     <hr>
     <footer>
-        <p>&copy; 2026 {{ nome | default:"Visitante" }}</p>
+        <p>&copy; 2026 {{ dono | default:"Visitante" }}</p>
     </footer>
 
 </body>

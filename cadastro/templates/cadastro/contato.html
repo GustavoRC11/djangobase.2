@@ -1,15 +1,28 @@
 {% extends 'cadastro/base.html' %}
 
-{% block titulo %} - Faça Contato{% endblock %}
+{% load widget_tweaks %}
+
+{% block titulo %}Cadastro - Faça Contato{% endblock %}
 
 {% block conteudo %}
-<article></article>
-    <h2>Adicionar Contato</h2>
+<article>
+
+    <h2>Faça Contato</h2>
+    <p>Preencha todos os campos do formulário abaixo para entrar e contato com e equipe do site.</p>
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
+        {# form.as_p #}
+
+        {% for field in form %}
+        <p class="mb-3">
+            {{ field.label_tag }}
+            {{ field | add_class:"form-control" }}
+        </p>
+        {% endfor %}
+
+        <p><button type="submit">Enviar</button></p>
     </form>
-</article>    
+
+</article>
 {% endblock %}

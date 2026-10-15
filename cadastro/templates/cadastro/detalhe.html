@@ -1,16 +1,25 @@
 {% extends 'cadastro/base.html' %}
 
-{% block titulo %}Caadastro - {{ pessoa.nome }}{% endblock %}
+{% block titulo %}Cadastro - Detalhes de {{ pessoa.nome }}{% endblock %}
 
 {% block conteudo %}
 <article>
-    <h1>{{ pessoa.nome }}</h1>
-    <p><strong>Email:</strong> {{ pessoa.email }}</p>
-    <p><strong>Idade:</strong> {{ pessoa.idade }} anos</p>
-
-    <a href="{% url 'editar' id=pessoa.id %}">Editar</a>
+    <h2>Detalhes de {{ pessoa.nome }}</h2>
+    <ul>
+        <li><strong>ID:</strong> {{ pessoa.id }}</li>
+        <li><strong>Email:</strong> {{ pessoa.email }}</li>
+        <li><strong>Idade:</strong> {{ pessoa.idade }} anos</li>
+        <li><strong>Telefone(s):</strong>
+            <ul>
+                {% for telefone in pessoa.telefones.all %}
+                <li>{{ telefone.numero }}</li>
+                {% empty %}
+                <li>Nenhum telefone cadastrado.</li>
+                {% endfor %}
+            </ul>
+    </ul>
+    <a href="{% url 'editar' id=pessoa.id %}">Editar</a> |
     <a href="{% url 'deletar' id=pessoa.id %}">Apagar</a> |
     <a href="{% url 'index' %}">Voltar</a>
-
 </article>
 {% endblock %}
